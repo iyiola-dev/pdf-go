@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+  <head> </head>
+  <body
+    style="
+      padding: 0;
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+        Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+        sans-serif;
+    "
+  >
+    <div
+      style="
+        max-width: 700px;
+        height: 100vh;
+        background: #fff;
+        margin: auto;
+        border: 1px solid #ddd;
+        display: flex;
+        flex-direction: column;
+        padding: 20px 50px;
+      "
+    >
+      <div
+        style="
+          display: flex;
+          width: 100%;
+          margin-bottom: 1.5rem;
+          margin-top: 1rem;
+          position: relative;
+        "
+      >
+        <img
+          style="width: 81px; height: 24px"
+          src="https://res.cloudinary.com/abokiafrica/image/upload/v1642066376/mail%20template/logo_jrydtr.png"
+        />
+        <img
+          src="https://res.cloudinary.com/abokiafrica/image/upload/v1662970358/mail%20template/Stamp_eaqfij.png"
+          style="position: absolute; right: 0; width: 140px; height: 140px"
+        />
+      </div>
+      <p style="line-height: 1.5">
+        Aboki Afica Inc,<br />
+        651 N Broad Street, Suite 206, <br />
+        Middletown, DE 19700,<br />
+        USA.<br />
+        hello@grey.co
+      </p>
+      <div style="line-height: 1.5; margin-top: 1.5rem">
+        <h4 style="margin: 0; padding: 0">{{.Currency}} STATEMENT OF ACCOUNT</h4>
+        <p style="margin: 0; padding: 0">Aug 02, 2022 to Aug 11, 2022</p>
+      </div>
+      <div style="display: flex; width: 100%; margin-top: 1.5rem">
+        <div
+          style="
+            background: #f0f6fe;
+            border-radius: 10px;
+            padding: 12px;
+            margin-top: 20px;
+            flex: 1;
+            margin-right: 1rem;
+          "
+        >
+          <h4 style="margin: 0; margin-bottom: 12px">{{.Name}}</h4>
+          <p style="margin: 0">{{.Address}}</p>
+        </div>
+        <div
+          style="
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            flex: 3;
+            margin-top: 20px;
+          "
+        >
+          <div style="flex: 1; min-width: 30%">
+            <span style="font-weight: 600">Account Number</span>
+            <p style="margin-top: 12px">{{.AccountNumber}}</p>
+          </div>
+          <div style="flex: 1; min-width: 30%">
+            <span style="font-weight: 600">Swift Code</span>
+            <p style="margin-top: 12px">{{.SwiftCode}}</p>
+          </div>
+          <div style="flex: 1; min-width: 30%">
+            <span style="font-weight: 600">Sort Code</span>
+            <p style="margin-top: 12px">{{.SortCode}}</p>
+          </div>
+          <div style="flex: 1; min-width: 30%">
+            <span style="font-weight: 600">Account Type</span>
+            <p style="margin-top: 12px">{{.AccountType}}</p>
+          </div>
+        </div>
+      </div>
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-top: 2rem;
+        "
+      >
+        <p style="font-weight: 600">{{.Currency}} BALANCE AS AT August 12, 2022</p>
+        <p>$0.00</p>
+      </div>
+      <table
+        style="border-spacing: 0; border-collapse: collapse; margin-top: 1rem"
+      >
+        <thead style="background: #f7f7f7">
+          <th
+            style="
+              padding: 0.8rem;
+              border-top-left-radius: 4px;
+              border-bottom-left-radius: 4px;
+              font-size: 12px;
+              font-weight: 500;
+            "
+          >
+            Date
+          </th>
+          <th style="padding: 0.8rem; font-size: 12px; font-weight: 500">
+            Description
+          </th>
+          <th style="padding: 0.8rem; font-size: 12px; font-weight: 500">
+            Amount
+          </th>
+          <th
+            style="
+              padding: 0.8rem;
+              border-top-right-radius: 4px;
+              border-bottom-right-radius: 4px;
+              font-size: 12px;
+              font-weight: 500;
+            "
+          >
+            Reference
+          </th>
+        </thead>
+        <tbody>
+        {{range .Transactions}}
+          <tr style="border-bottom: 1px solid #f7f7f7">
+            <td
+              style="
+                padding: 0.8rem;
+                font-size: 12px;
+                font-weight: 400;
+                text-align: center;
+              "
+            >
+                {{.Date}}
+            </td>
+            <td
+              style="
+                padding: 0.8rem;
+                font-size: 12px;
+                font-weight: 400;
+                text-align: center;
+              "
+            >
+                {{.Description}}
+            </td>
+            {{if eq .Type "debit"}}
+            <td
+              style="
+                padding: 0.8rem;
+                font-size: 12px;
+                font-weight: 400;
+                text-align: center;
+                color: #b20006;
+              "
+            >
+              {{.Amount}}
+            </td>
+            {{else}}
+            <td
+                    style="
+                padding: 0.8rem;
+                font-size: 12px;
+                font-weight: 400;
+                text-align: center;
+                color: #13532e;
+              "
+            >
+              {{.Amount}}
+            </td>
+            {{end}}
+            <td
+              style="
+                padding: 0.8rem;
+                font-size: 12px;
+                font-weight: 400;
+                text-align: center;
+              "
+            >
+                {{.Reference}}
+            </td>
+          </tr>
+            {{end}}
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
