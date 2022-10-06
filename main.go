@@ -4,8 +4,9 @@ import (
 	"bytes"
 	"encoding/base64"
 	"fmt"
-	"github.com/SebastiaanKlippert/go-wkhtmltopdf"
 	"html/template"
+
+	"github.com/SebastiaanKlippert/go-wkhtmltopdf"
 )
 
 func main() {
@@ -15,14 +16,14 @@ func main() {
 	var templ *template.Template
 	var err error
 
-	templ, err = template.ParseFiles("template.html")
+	templ, err = template.ParseFiles("proofOfAccount.html")
 	if err != nil {
 		panic(err)
 	}
 
 	// apply the parsed HTML template data and keep the result in a Buffer
 	var doc bytes.Buffer
-	err = templ.Execute(&doc, ReturnData())
+	err = templ.Execute(&doc, ReturnNewData())
 	if err != nil {
 		panic(err)
 	}
@@ -40,7 +41,7 @@ func main() {
 	}
 
 	//save the pdf
-	err = pdfg.WriteFile("output.pdf")
+	err = pdfg.WriteFile("proof.pdf")
 	if err != nil {
 		panic(err)
 	}

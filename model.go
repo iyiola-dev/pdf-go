@@ -46,3 +46,25 @@ func ReturnData() Data {
 		},
 	}
 }
+
+type NewData struct {
+	Name     string
+	Route    string
+	Number   string
+	Date     string
+	Code     string
+	Note     string
+	Currency string
+}
+
+func ReturnNewData() NewData {
+	return NewData{
+		Currency: "USD",
+		Name:     "John Doe",
+		Route:    "1234567890",
+		Number:   "1234567890",
+		Date:     "2020-01-01",
+		Code:     "1234567890",
+		Note:     "This account only supports payments via SEPA & SEPA Instant Payment Schemes from EEA regions.",
+	}
+}

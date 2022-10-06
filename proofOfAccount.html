@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+        }
+
+        .header {
+            width: 100%;
+            background: #F1F5FC;
+            height: auto;
+        }
+
+        .header .header-content {
+            height: 70px;
+            padding: 36px 43px;
+            line-height: 70px;
+            vertical-align: middle;
+        }
+
+        .header .header-content img {
+            float: left;
+            margin-top: 23px;
+        }
+
+        .header .header-content p {
+            float: right;
+            font-size: 20px;
+        }
+
+        .main-content {
+            padding-top: 24px;
+        }
+
+        .main-content .container p {
+            font-size: 16px;
+            padding: 16px 0;
+            float: left;
+            line-height: 1.5;
+            clear: both;
+        }
+
+        .account-details {
+            clear: both
+        }
+
+        .account-details table {
+            margin-bottom: 30px;
+        }
+
+        .account-details table tbody tr td {
+            padding: 12px 0;
+        }
+
+        .account-details table tbody tr td:first-of-type {
+            padding-right: 32px;
+            font-weight: bold;
+        }
+
+        .main-content .container .note {
+            background-color: rgba(244, 211, 165, 0.15);
+            clear: both;
+            min-height: 100px;
+            height: max-content;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+
+        .main-content .container .note p {
+            font-size: 14px;
+            padding: 16px;
+        }
+
+        .footer {
+            background-color: #F1F5FC;
+            clear: both;
+            padding: 16px 0;
+            text-align: center;
+        }
+
+        .footer .container i {
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="container header-content">
+            <img style="width: 81px; height: 24px"
+                src="https://res.cloudinary.com/abokiafrica/image/upload/v1642066376/mail%20template/logo_jrydtr.png" />
+            <p>PROOF OF ACCOUNT</p>
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="container">
+            <p>
+                651 N Broad Street, Suite 206<br /> Middletown, DE 19700<br />
+                USA.
+                www.grey.co<br />
+                Friday, SemtebTer 16, 2022
+            </p>
+            <p>To whom it may concern,</p>
+            <p>
+                This letter is being furnished by <b>Grey</b> to confirm the following client account details
+                as of the date listed above.
+            </p>
+            <div class="account-details">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Name on Account:</td>
+                            <td>{{.Name}}</td>
+                        </tr>
+                        <tr>
+                            <td>Date Account Opened:</td>
+                            <td>{{.Date}}</td>
+                        </tr>
+                        <tr>
+                            <td>Account Number:</td>
+                            <td>{{.Number}}</td>
+                        </tr>
+                        <tr>
+                            <td>Swift Code:</td>
+                            <td>{{.Code}}</td>
+                        </tr>
+                        <tr>
+                            <td>Wire Routing:</td>
+                            <td>{{.Route}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="note">
+                {{if eq .Currency "USD"}}
+                <p><b>Kindly Note:</b> Payments can only be received from countries within the permitted jurisdictions. Click this <a href="https://support.grey.co/en/articles/6383103-non-supported-jurisdictions-for-the-usd-foreign-account">link</a> to view the restricted jurisdictions.</p>
+                {{else}}
+                <p><b>Kindly Note:</b>{{.Note}}</p>
+                {{end}}
+            </div>
+            <p>
+                In strict confidence and for the informational purposes solely of the intended audience,
+                it is understood that this letter makes no representations whatsoever as to the
+                financial or general operating condition of the aforementioned Grey client, nor does it
+                attach any liability or financial responsibility to Grey, its officers or employees, or
+                any affliliated entities thereof.<br /><br /> We hope this information is useful, and
+                should you have any further questions please feel free to contact us directly at <a
+                    href="mailto:support@grey.co" style="color: #418af5; text-decoration: none">support@grey.co</a>
+            </p>
+            <p>Sincerely, <br />
+                Joseph Aghedo<br />
+                Chief Operating Officer
+            </p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <i>Grey’s services are provided by Aboki Africa Inc. A Company duly incorporated under the
+                laws of Delaware, United States of America</i>
+        </div>
+    </div>
+
+</body>
+
+</html>
